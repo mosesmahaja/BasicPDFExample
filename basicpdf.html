@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pdfMake Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+</head>
+<body>
+
+<button id="generatePdf">Generate PDF</button>
+
+<script>
+    document.getElementById('generatePdf').addEventListener('click', function() {
+        const docDefinition = {
+            content: [
+                { text: 'Hello World!', fontSize: 15 },
+                { text: 'This is a PDF generated with pdfMake.', margin: [0, 20, 0, 0] },
+                {
+                    text: [
+                        'You can include ', 
+                        { text: 'formatted text', bold: true }, 
+                        ' in your PDFs.'
+                    ]
+                }
+            ]
+        };
+
+        pdfMake.createPdf(docDefinition).download('example.pdf');
+    });
+</script>
+
+</body>
+</html>
